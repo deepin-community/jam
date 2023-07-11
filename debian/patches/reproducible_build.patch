@@ -1,0 +1,16 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: locale-independent sort to get reproducible result
+
+Index: jam-2.6/yyacc
+===================================================================
+--- jam-2.6.orig/yyacc
++++ jam-2.6/yyacc
+@@ -41,7 +41,7 @@ sed '
+ 		b 1
+ 	}
+ 	d
+-' $in | sort -u | sed '
++' $in | LC_ALL=C sort -u | sed '
+ 	h
+ 	y/abcdefghijklmnopqrstuvwxyz/ABCDEFGHIJKLMNOPQRSTUVWXYZ/
+ 	s/:/_COLON/

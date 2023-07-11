@@ -1,0 +1,3 @@
+version=3
+opts="dversionmangle=s/rel$//" \
+https://swarm.workshop.perforce.com/projects/perforce_software-jam/files/main /projects/perforce_software-jam/files/main/jam-(.+)\.tar

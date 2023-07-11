@@ -1,0 +1,20 @@
+--- jam-2.5rel.orig/Jam.html
++++ jam-2.5rel/Jam.html
+@@ -169,11 +169,16 @@
+ 	In the parsing phase, <b>jam</b> reads and executes the Jambase
+ 	file, by default the built-in one.  It is written in the <b>jam</b>
+ 	language.  See <a href="#language"> Language</a> below.  The
+-	last action of the Jambase is to read (via the "include" rule)
++	last action of the builtin Jambase is to read (via the "include" rule)
+ 	a user-provided file called "Jamfile".
+ 
+ 	<P>
+ 
++	On Debian systems, the builtin Jambase is available for
++	reference as <tt>/usr/share/doc/jam/Jambase.gz</tt>.
++
++	<P>
++
+ 	Collectively, the purpose of the Jambase and the Jamfile is to
+ 	name built target and source files, construct the dependency
+ 	graph among them, and associate build actions with targets.
