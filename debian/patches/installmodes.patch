@@ -1,0 +1,22 @@
+Index: jam-2.6/Jambase
+===================================================================
+--- jam-2.6.orig/Jambase
++++ jam-2.6/Jambase
+@@ -542,7 +542,7 @@ else if $(UNIX)
+ 	CRELIB		?= ;
+ 	DOT			?= . ;
+ 	DOTDOT		?= .. ;
+-	EXEMODE		?= 711 ;
++	EXEMODE		?= 755 ;
+ 	FILEMODE	?= 644 ;
+ 	FORTRAN		?= f77 ;
+ 	FORTRANFLAGS	?= ;
+@@ -1180,7 +1180,7 @@ rule RmTemps
+ 
+ rule Setuid
+ {
+-	MODE on [ FAppendSuffix $(<) : $(SUFEXE) ] = 4711 ;
++	MODE on [ FAppendSuffix $(<) : $(SUFEXE) ] = 4755 ;
+ }
+ 
+ rule Shell

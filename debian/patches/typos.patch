@@ -1,0 +1,62 @@
+Index: jam-2.6/Jamfile.html
+===================================================================
+--- jam-2.6.orig/Jamfile.html
++++ jam-2.6/Jamfile.html
+@@ -290,7 +290,7 @@ Handling Directory Trees
+               for automatic customizing with autoconf(GNU).
+ <P>
+ 	<LI> 	Optionally, set an environment variable pointing
+-		to the root directory of the srouce tree. The
++		to the root directory of the source tree. The
+ 		variable's name is left up to you, but in these
+ 		examples, we use TOP.
+ </OL>
+Index: jam-2.6/Jam.html
+===================================================================
+--- jam-2.6.orig/Jam.html
++++ jam-2.6/Jam.html
+@@ -273,7 +273,7 @@ jam [ -a ] [ -g ] [ -n ] [ -q ] [ -v ]
+ 
+ <DT> <P> <H3> Overview </H3> <DD>
+ 
+-	<B>Jam</b> has a interpreted, procedural language with a few
++	<B>Jam</b> has an interpreted, procedural language with a few
+ 	select features to effect program construction.  Statements in
+ 	<b>jam</b> are rule (procedure) definitions, rule invocations,
+ 	updating action definitions, flow-of-control structures, variable
+@@ -339,7 +339,7 @@ jam [ -a ] [ -g ] [ -n ] [ -q ] [ -v ]
+ 
+ 	<P>
+ 
+-	When an rule with updating actions is invoked, those actions are
++	When a rule with updating actions is invoked, those actions are
+ 	added to those associated with its built targets ($(1)) before
+ 	the rule's procedure is run.  Later, to build the targets in the
+ 	updating phase, the actions are passed to the OS command shell,
+@@ -365,7 +365,7 @@ jam [ -a ] [ -g ] [ -n ] [ -q ] [ -v ]
+ 	    <P><DD> Invoke a rule.  A rule is invoked with values in
+ 	    <I>field1</I> through <I>fieldN</I> (9 max).  They may be
+ 	    referenced in the procedure's <I>statements</I> as $(1)
+-	    through $(<9>N</I>).  $(&lt;) and $(&gt;) are synonymous
++	    through $(<I>N</I>).  $(&lt;) and $(&gt;) are synonymous
+ 	    with $(1) and $(2).
+ 
+ 	    <P>
+@@ -851,7 +851,7 @@ jam [ -a ] [ -g ] [ -n ] [ -q ] [ -v ]
+ 
+ 	<DD> Builds a direct dependency: makes each of <I>targets1</I>
+ 	depend on each of <I>targets2</I>.  Generally, <I>targets1</I>
+-	will be rebuilt if <I>targets2</I> are themselves rebuilt are
++	will be rebuilt if <I>targets2</I> are themselves rebuilt
+ 	or are newer than <I>targets1</I>.
+ 
+ 	<P><DT><CODE>
+@@ -1069,7 +1069,7 @@ jam [ -a ] [ -g ] [ -n ] [ -q ] [ -v ]
+ 
+ 	<P>
+ 
+-	These two variable control header file scanning.  $(HDRSCAN) is
++	These two variables control header file scanning.  $(HDRSCAN) is
+ 	an <b>egrep</b>(1) pattern, with ()'s surrounding the file name,
+ 	used to find file inclusion statements in source files.  Jambase
+ 	uses $(HDRPATTERN) as the pattern for $(HDRSCAN).  $(HDRRULE)

@@ -1,0 +1,11 @@
+--- jam-2.5rel.orig/Jambase
++++ jam-2.5rel/Jambase
+@@ -1420,7 +1420,7 @@
+ 
+ rule UserObject
+ {
+-	Exit "Unknown suffix on" $(>) "- see UserObject rule in Jamfile(5)." ;
++	Exit "Unknown suffix on" $(>) "- see UserObject rule in /usr/share/doc/jam/Jamfile.html." ;
+ }
+ 
+ rule Yacc

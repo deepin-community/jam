@@ -1,4 +1,54 @@
 #!/usr/bin/make -f
+# Sample debian/rules that uses debhelper.
+# GNU copyright 1997 to 1999 by Joey Hess.
+# GNU copyright 2001 by Yann Dirson.
+
+# This is the debian/rules file for packages jam and ftjam
+# It should be usable with both packages without any change
+
+# find out package name (jam/ftjam)
+jam = $(strip $(shell dpkg-parsechangelog | grep ^Source: | cut -d: -f2))
+
+# original jam should not get the same name as the alternative
+ifeq (${jam},jam)
+binname = jam.perforce
+else
+binname = ${jam}
+endif
 
 %:
 	dh $@
+
+GENERATED = jamgram.c jamgram.h jambase.c jamgramtab.h
+
+override_dh_auto_build: debian/jam.1
+  # backup generated files
+	test -r origfiles || { mkdir origfiles && cp -a $(GENERATED) origfiles/ ; }
+  # bootstrap
+	${MAKE} CFLAGS="$(CPPFLAGS) $(CFLAGS)" LINKLIBS="$(LDFLAGS)" ./jam0
+  # force update of generated files
+	rm -f $(GENERATED)
+	./jam0 -d x -s CCFLAGS="$(CPPFLAGS) $(CFLAGS)" -s LINKFLAGS="$(LDFLAGS)"
+
+%.1: %.man.sgml
+	/usr/bin/docbook-to-man $< > $@
+
+override_dh_auto_clean:
+	rm -rf bin.*
+	rm -f jam0 debian/jam.1
+	if test -r origfiles; then \
+	  mv origfiles/* . ;\
+	  rmdir origfiles ;\
+	fi
+
+override_dh_auto_install:
+	./jam0  -sBINDIR=$(CURDIR)/debian/${jam}/usr/bin \
+		-sCCFLAGS=-g -sOPTIM=-O2 \
+		install
+	cd debian/${jam}/usr/bin && mv jam ${binname}
+	install -d debian/${jam}/usr/share/man/man1/
+	install -m644 debian/jam.1 debian/${jam}/usr/share/man/man1/${binname}.1
+
+override_dh_installdocs:
+	dh_installdocs
+	dh_buildinfo

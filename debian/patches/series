@@ -1,0 +1,5 @@
+typos.patch
+debian-docpaths.patch
+jambase-clarification.patch
+installmodes.patch
+reproducible_build.patch

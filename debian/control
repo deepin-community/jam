@@ -1,15 +1,28 @@
-Source: template-repository
-Section: unknown
+Source: jam
+Section: devel
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Yann Dirson <dirson@debian.org>
+Build-Depends: debhelper (>= 9), dh-buildinfo, docbook-to-man, bison
+Vcs-git: https://salsa.debian.org/debian/jam.git
+Vcs-browser: https://salsa.debian.org/debian/jam
+Standards-Version: 4.4.1
 
-Package: template-repository
+Package: jam
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Software-build tool, replacement for make
+ Perforce's Jam (formerly called Jam/MR) is a powerful and highly
+ customizable utility to build programs and other things, that can run
+ on Un*x, Nt, VMS, OS/2 and Macintosh MPW, using portable Jamfiles.
+ It can build large projects spread across many directories in one
+ pass, and can run jobs in parallel where make would not.
+ .
+ It takes some time to fully grasp, especially when one's already
+ accustomed to make(1), but there's no comparison in power when
+ comparing these two tools.
+ .
+ Standard rules:
+  - can automatically extract header dependencies for C/C++ (you can
+ customize for you own language)
+  - provide for automatic "clean", "install", "uninstall" rules,
+ so that an automake-like tool is not needed
